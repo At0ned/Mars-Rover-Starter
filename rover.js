@@ -10,26 +10,31 @@ class Rover {
    message: message.name,
    results: [],
    };
+
+   
    
    let roverStatus = {
-      mode: "NORMAL",
-      generatorWatts: 110,
-      position: 98382
+      status: new Rover()
    }
-   //if (message.commands.length === 2)
+   
+   for (let i=0; i < message.commands.length; i++) {
    if (message.name === "MOVE") {
-   roverStatus.position = message.commands
+      roverStatus.position = message.commands
+      final.results.push(roverStatus)
+   
    } else if (message.name === "STATUS_CHECK") {
-      console.log(roverStatus)
+      final.results.push(roverStatus)
+      
    } else {
       roverStatus.mode = message.commands
+      final.results.push(roverStatus)
    }
+}
    
 
    return final
    }
 }
-
 
 
 module.exports = Rover;

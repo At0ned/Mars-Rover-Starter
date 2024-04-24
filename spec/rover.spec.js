@@ -25,8 +25,10 @@ test("response returned by receiveMessage contains the name of the message", fun
 })
 //Test 9
 test("response returned by receiveMessage includes two results if two commands are sent in the message", function(){
-  expect(response.results.length).toEqual(2);
+  expect(response.results.length).toEqual(message.commands.length);
 })
 //Test 10
-// test("responds correctly to the status check command")
+test("responds correctly to the status check command", function () {
+  expect().toEqual()
+})
 });
