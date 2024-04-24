@@ -19,8 +19,8 @@ class Rover {
       }
       final.results.push(move)
    
-   } else if (message.commands[i].commandType === "MOVE") {
-      this.position = message.commands
+   } else if (message.commands[i].commandType === "MOVE" && this.mode === "NORMAL") {
+      this.position = message.commands[i].value
       let move = {
       completed: true,
       }

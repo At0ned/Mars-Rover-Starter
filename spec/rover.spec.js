@@ -50,7 +50,6 @@ test("responds correctly to the status check command", function () {
 //Test 11
 test("responds correctly to the mode change command", function () {
 let low = [new Command("MODE_CHANGE", "LOW_POWER")]
-let norm = [new Command("MODE_CHANGE", "NORMAL")]
 let message = new Message("MODE_CHANGE", low)
 let rover = new Rover(98382);    
 expect(rover.receiveMessage(message).results).toEqual([{completed: true}])
@@ -63,5 +62,12 @@ test("responds with a false completed value when attempting to move in LOW_POWER
   let rover = new Rover(98382);    
   expect(rover.receiveMessage(message).results).toEqual([{completed: true}, {completed: false}])
 })
-
+//Test 13
+test("responds with the position for the move command", function (){
+  let commands = [new Command('MOVE', 12000)]
+  let message = new Message("We should move", commands)
+  let rover = new Rover(98382);    
+  expect(rover.receiveMessage(message).results).toEqual([{completed: true}])
+  expect(rover.position).toEqual(12000)
+})
 });
