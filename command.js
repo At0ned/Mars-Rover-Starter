@@ -8,5 +8,7 @@ class Command {
    }
  
  }
- 
+ let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+ console.log(commands[1])
+
  module.exports = Command;

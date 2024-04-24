@@ -7,15 +7,29 @@ class Rover {
    }
    receiveMessage(message){
    let final = {
-   received: message,
+   message: message.name,
    results: [],
    };
+   
+   let roverStatus = {
+      mode: "NORMAL",
+      generatorWatts: 110,
+      position: 98382
+   }
+   //if (message.commands.length === 2)
+   if (message.name === "MOVE") {
+   roverStatus.position = message.commands
+   } else if (message.name === "STATUS_CHECK") {
+      console.log(roverStatus)
+   } else {
+      roverStatus.mode = message.commands
+   }
+   
 
    return final
    }
 }
-let wally = new Rover(100)
-console.log(wally.receiveMessage("MOVE", "HEY"))
+
 
 
 module.exports = Rover;
