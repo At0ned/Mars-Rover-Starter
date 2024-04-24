@@ -14,6 +14,12 @@ class Rover {
    
    for (let i=0; i < message.commands.length; i++) {
    if (message.commands[i].commandType === "MOVE") {
+      if (this.mode = "LOW_POWER") {
+         let move = {
+            completed: false
+         }
+         final.results.push(move)
+      }
       this.position = message.commands
    let move = {
       completed: true,
