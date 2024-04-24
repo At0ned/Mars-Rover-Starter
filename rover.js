@@ -12,26 +12,31 @@ class Rover {
    };
 
    
-   
-   let roverStatus = {
-      status: new Rover()
-   }
-   
    for (let i=0; i < message.commands.length; i++) {
-   if (message.name === "MOVE") {
-      roverStatus.position = message.commands
-      final.results.push(roverStatus)
-   
-   } else if (message.name === "STATUS_CHECK") {
-      final.results.push(roverStatus)
+   if (message.commands[i].commandType === "MOVE") {
+      this.position = message.commands
+   let move = {
+      completed: true,
+   }
       
-   } else {
-      roverStatus.mode = message.commands
-      final.results.push(roverStatus)
+      final.results.push(move)
+   
+   } else if (message.commands[i].commandType === "STATUS_CHECK") {
+      let status = {
+         completed: true,
+         roverStatus: {mode: this.mode, generatorWatts: this.generatorWatts, position: this.position }
+      }
+      final.results.push(status)
+      
+   } else if (message.commands[i].commandType === "MODE_CHANGE") {
+      this.mode = message.commands[i].value
+      let mode = {
+         completed: true,
+      }
+      final.results.push(mode)
    }
 }
    
-
    return final
    }
 }
