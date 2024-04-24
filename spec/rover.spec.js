@@ -57,8 +57,11 @@ expect(rover.receiveMessage(message).results).toEqual([{completed: true}])
 expect(rover.mode).toEqual("LOW_POWER")
 })
 //Test 12
-// test("responds with a false completed value when attempting to move in LOW_POWER mode", function (){
-//   expect().toEqual()
-// })
+test("responds with a false completed value when attempting to move in LOW_POWER mode", function (){
+  let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('MOVE', 12000)];
+  let message = new Message("Can't Move", commands)
+  let rover = new Rover(98382);    
+  expect(rover.receiveMessage(message).results).toEqual([{completed: true}, {completed: false}])
+})
 
 });

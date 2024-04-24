@@ -12,18 +12,18 @@ class Rover {
    };
 
    
-   for (let i=0; i < message.commands.length; i++) {
-   if (message.commands[i].commandType === "MOVE") {
-      if (this.mode = "LOW_POWER") {
-         let move = {
-            completed: false
-         }
-         final.results.push(move)
+   for (let i=0; i < message.commands.length; i++) { 
+   if (message.commands[i].commandType === "MOVE" && this.mode === "LOW_POWER") {
+      let move = {
+         completed: false
       }
+      final.results.push(move)
+   
+   } else if (message.commands[i].commandType === "MOVE") {
       this.position = message.commands
-   let move = {
+      let move = {
       completed: true,
-   }
+      }
       
       final.results.push(move)
    
